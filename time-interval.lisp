@@ -182,7 +182,6 @@
           ("W" :weeks)
           ("D" :days)
           ("H" :hours)
-          ("M" :minutes)
           ("MI" :minutes)
           ("S" :seconds)))
 
