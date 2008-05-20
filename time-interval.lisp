@@ -178,19 +178,21 @@
             (setf (gethash abbrev *unit-hash*)
                   keyword)))
         '(("Y" :years)
-          ("M" :months)
+          ("MO" :months)
           ("W" :weeks)
           ("D" :days)
           ("H" :hours)
           ("M" :minutes)
+          ("MI" :minutes)
           ("S" :seconds)))
 
 (defun parse-time-interval-string (string)
-  (let ((regs (cl-ppcre:split "([ymwdhmsYMWDHMS\s]+)" string :with-registers-p t)))
+  (let ((regs (cl-ppcre:split "([ymwdhsoiYMWDHSOI\s]+)" string :with-registers-p t)))
     (let ((keys (loop for (num unit) on regs by #'cddr
                    nconc
-                     (let ((key (gethash (string-upcase unit) *unit-hash*)))
-                       (unless key
+                     (let ((key (gethash (string-upcase unit) *unit-hash*))
+                           (num (parse-integer num)))
+                       (unless (and key num)
                          (error "bad time-interval-string!"))
                        (list key num)))))
       (when keys
