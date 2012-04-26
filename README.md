@@ -1,4 +1,5 @@
-time-interval
+# time-interval
+
 Cyrus Harmon
 
 time-interval is a common lisp library for flexibly encoding time
@@ -17,13 +18,13 @@ what the starting point is, the number of days (hours, etc...) in a
 the time intervals and for computing a new exact time given a starting
 time and a time interval.
 
-Required Libraries:
+# Required Libraries:
 
 cl-ppcre, local-time
 
-Classes:
+# Classes:
 
-time-interval:
+## time-interval
 
 The time-interval class is used for representing a given interval of
 time, such as 6 months, 2 days, 4 hours and 3 seconds. Each of the
