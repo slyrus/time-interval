@@ -33,10 +33,11 @@
   :author "Cyrus Harmon <ch-lisp@bobobeach.com>"
   :version "0.0.1"
   :licence "BSD"
-  :depends-on (cl-ppcre)
+  :depends-on (cl-ppcre local-time)
+  :serial t
   :components
   ((:static-file "version" :pathname #p"version.lisp-expr")
    (:static-file "README")
    (:static-file "LICENSE")
    (:cl-source-file "defpackage")
-   (:cl-source-file "time-interval" :depends-on ("defpackage"))))
+   (:cl-source-file "time-interval")))
