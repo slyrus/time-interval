@@ -87,7 +87,7 @@
           ("NS" :nanoseconds)))
 
 (defun parse-time-interval-string (string)
-  (let ((regs (cl-ppcre:split "([ymwdhsoiYMWDHSNOI\s]+)" string :with-registers-p t)))
+  (let ((regs (cl-ppcre:split "([ymwdhsnoiYMWDHSNOI\s]+)" string :with-registers-p t)))
     (let ((keys (loop for (num unit) on regs by #'cddr
                    nconc
                      (let ((key (gethash (string-upcase unit) *unit-hash*))
@@ -164,7 +164,7 @@
                  :seconds (+ (interval-seconds t1) (interval-seconds t2))
                  :nanoseconds (+ (interval-nanoseconds t1) (interval-nanoseconds t2))))
 
-(defgeneric t- (t1 t2))
+(defgeneric t- (time-or-interval-1 time-or-interval-2))
 
 (defmethod t- ((t1 local-time:timestamp) (t2 time-interval))
   (timestamp-add-interval t1 (negate-time-interval t2)))
