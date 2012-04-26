@@ -31,6 +31,15 @@
 (in-package #:cl-user)
 
 (defpackage #:time-interval
-  (:nicknames #:time)
-  (:use :common-lisp))
+  (:nicknames #:interval)
+  (:use :common-lisp)
+  (:export #:time-interval
+           #:copy-time-interval
+           
+           #:parse-time-interval-string
+           #:negate-time-interval
+
+           #:make-timestamp*
+           #:t+
+           #:t-))
 
