@@ -39,5 +39,5 @@
   ((:static-file "version" :pathname #p"version.lisp-expr")
    (:static-file "README")
    (:static-file "LICENSE")
-   (:cl-source-file "defpackage")
+   (:cl-source-file "package")
    (:cl-source-file "time-interval")))
