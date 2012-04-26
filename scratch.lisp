@@ -1,5 +1,8 @@
 
-(in-package :time-interval)
+(defpackage :time-interval-scratch
+  (:use :cl :time-interval))
+
+(in-package :time-interval-scratch)
 
 (defparameter *t1* (local-time:now))
 
