@@ -1,6 +1,6 @@
 ;;; file: time-interval.asd
 ;;;
-;;; Copyright (c) 2008 Cyrus Harmon (ch-lisp@bobobeach.com)
+;;; Copyright (c) 2008-2012 Cyrus Harmon (ch-lisp@bobobeach.com)
 ;;; All rights reserved.
 ;;;
 ;;; Redistribution and use in source and binary forms, with or without
@@ -30,6 +30,7 @@
 
 (asdf:defsystem time-interval
   :name "time-interval"
+  :description "A library for representing intervals of time"
   :author "Cyrus Harmon <ch-lisp@bobobeach.com>"
   :version "0.0.1"
   :licence "BSD"
