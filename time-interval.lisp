@@ -180,3 +180,23 @@
                  :seconds (- (interval-seconds t1) (interval-seconds t2))
                  :nanoseconds (- (interval-nanoseconds t1) (interval-nanoseconds t2))))
 
+(defmethod t- ((t1 timestamp) (t2 timestamp))
+  "Calculate the delta between two times.
+Note that it is a delta in days, hours, minutes, seconds, and nanoseconds. No month or year.
+Also note that it doesn't specially account for leap seconds."
+  (let ((days (- (day-of t1) (day-of t2)))
+        (sec-delta (- (sec-of t1) (sec-of t2)))
+        (nanoseconds (- (nsec-of t2) (nsec-of t1))))
+    (multiple-value-bind (hours minutes seconds) (normalize-seconds sec-delta)
+      (make-instance 'time-interval
+        :days days
+        :hours hours
+        :minutes minutes
+        :seconds seconds
+        :nanoseconds nanoseconds))))
+
+(defun normalize-seconds (total-seconds)
+  (declare (integer total-seconds))
+  (multiple-value-bind (hours rem) (truncate total-seconds 3600)
+    (multiple-value-bind (minutes seconds) (truncate rem 60)
+      (values hours minutes seconds))))
