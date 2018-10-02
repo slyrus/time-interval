@@ -180,3 +180,17 @@
                  :seconds (- (interval-seconds t1) (interval-seconds t2))
                  :nanoseconds (- (interval-nanoseconds t1) (interval-nanoseconds t2))))
 
+(defun timestamp-decoded-difference (tend tstart)
+  "Computes the difference between the individual components of
+local-time:timestamp t1 and t2. Returns 8 values: dyear dmonth dday
+dhh dmm dss dns dday-of-week where dyear is the difference in years,
+etc..."
+  (destructuring-bind (dns dss dmm dhh dday dmonth dyear dday-of-week)
+      (mapcar #'-
+              (subseq (multiple-value-list
+                       (local-time:decode-timestamp tend))
+                      0 8)
+              (subseq (multiple-value-list
+                       (local-time:decode-timestamp tstart))
+                      0 8))
+    (values dyear dmonth dday dhh dmm dss dns dday-of-week)))

@@ -41,5 +41,7 @@
 
            #:make-timestamp*
            #:t+
-           #:t-))
+           #:t-
+
+           #:timestamp-decoded-difference))
 
