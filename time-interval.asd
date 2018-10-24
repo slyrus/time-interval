@@ -37,7 +37,5 @@
   :depends-on (cl-ppcre local-time)
   :serial t
   :components
-  ((:static-file "README")
-   (:static-file "LICENSE")
-   (:cl-source-file "package")
+  ((:cl-source-file "package")
    (:cl-source-file "time-interval")))
