@@ -194,3 +194,8 @@ etc..."
                        (local-time:decode-timestamp tstart))
                       0 8))
     (values dyear dmonth dday dhh dmm dss dns dday-of-week)))
+
+(defmethod t- ((t1 local-time:timestamp) (t2 local-time:timestamp))
+  (multiple-value-bind (y mo d h m s ns)
+      (timestamp-decoded-difference t1 t2)
+    (time-interval :years y :months mo :days d :hours h :minutes m :seconds s :nanoseconds ns)))
